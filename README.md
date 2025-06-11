@@ -50,4 +50,4 @@ A modern chatbot application built with Streamlit and OpenAI's language models.
 
 ## License
 
-MIT License 
+MIT License # Jeondo-Chatbot
