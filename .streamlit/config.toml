@@ -1,0 +1,17 @@
+# .streamlit/config.toml
+
+[theme]
+# 전체 페이지 배경
+backgroundColor = "#FDF5E6"  # Old Lace (오래된 레이스)
+
+# 메인 콘텐츠 및 사이드바 배경
+secondaryBackgroundColor = "#FAF9F6" # Off-White (오프화이트)
+
+# 기본 텍스트 색상
+textColor = "#31333F" # Dark Gray (짙은 회색)
+
+# 위젯 등 강조 색상 (버튼, 슬라이더 등)
+primaryColor = "#B0C4DE" # Light Steel Blue (차분한 하늘색)
+
+# 폰트 스타일 ('serif'는 명조체 계열, 'sans serif'는 고딕체 계열)
+font = "serif"
