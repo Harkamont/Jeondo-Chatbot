@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Constants
-DEFAULT_MODEL = "gemini-2.5-flash"  # Corrected model name
+DEFAULT_MODEL = "gemini-1.5-flash-latest"
 DEFAULT_TEMPERATURE = 0.7
 MAX_TOKENS = 20000
 
@@ -74,7 +74,6 @@ class ChatbotManager:
         self.chat_model = genai.GenerativeModel(
             self.model_name,
             generation_config=self.generation_config,
-            system_instruction=self.system_instruction,
         )
 
     def add_system_message(self, message: str) -> None:
@@ -94,7 +93,16 @@ class ChatbotManager:
         if not self.chat_model:
             self._initialize_model()
 
-        chat_session = self.chat_model.start_chat(history=self.conversation_history)
+        # Prepare the initial history with system instruction if it exists
+        initial_history = []
+        if self.system_instruction:
+            initial_history.append({'role': 'user', 'parts': [{'text': self.system_instruction}]})
+            initial_history.append({'role': 'model', 'parts': [{'text': 'ok'}]}) # Model acknowledges system instruction
+
+        # Combine initial history with existing conversation history
+        combined_history = initial_history + self.conversation_history
+
+        chat_session = self.chat_model.start_chat(history=combined_history)
 
         try:
             self.add_user_message(user_message)
