@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Constants
-DEFAULT_MODEL = "gemini-1.5-flash-latest"
+DEFAULT_MODEL = "gemini-2.5-flash"
 DEFAULT_TEMPERATURE = 0.7
 MAX_TOKENS = 20000
 
