@@ -41,7 +41,7 @@ class ChatbotManager:
             google_api_key=self.api_key,
             temperature=temperature,
             max_output_tokens=max_tokens,
-            convert_system_message_to_human=True
+            convert_system_message_to_human=True,
         )
         self.conversation_history: List[BaseMessage] = []
 
