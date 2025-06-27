@@ -10,7 +10,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.schema import (
     HumanMessage,
     AIMessage,
-    SystemMessage,
     BaseMessage,
 )
 
@@ -18,9 +17,9 @@ from langchain.schema import (
 load_dotenv()
 
 # Constants
-DEFAULT_MODEL = "gemini-2.5-flash"
+DEFAULT_MODEL = "gemini-2.5-flash-preview-05-20"
 DEFAULT_TEMPERATURE = 0.7
-MAX_TOKENS = 2048
+MAX_TOKENS = 1024
 
 
 class ChatbotManager:
@@ -41,12 +40,12 @@ class ChatbotManager:
             google_api_key=self.api_key,
             temperature=temperature,
             max_output_tokens=max_tokens,
-            convert_system_message_to_human=True,
         )
         self.conversation_history: List[BaseMessage] = []
 
     def add_system_message(self, message: str) -> None:
-        self.conversation_history.append(SystemMessage(content=message))
+        # ✅ Gemini Flash는 SystemMessage를 지원하지 않으므로 HumanMessage로 대신 처리
+        self.conversation_history.append(HumanMessage(content=message))
 
     def add_user_message(self, message: str) -> None:
         self.conversation_history.append(HumanMessage(content=message))
