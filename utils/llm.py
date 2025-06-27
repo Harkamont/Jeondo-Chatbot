@@ -18,9 +18,9 @@ from langchain.schema import (
 load_dotenv()
 
 # Constants
-DEFAULT_MODEL = "gemini-2.5-flash-preview-05-20"
+DEFAULT_MODEL = "gemini-2.5-flash"
 DEFAULT_TEMPERATURE = 0.7
-MAX_TOKENS = 1024
+MAX_TOKENS = 2048
 
 
 class ChatbotManager:
